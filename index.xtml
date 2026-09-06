@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pani Bułeczka 🥐</title>
+
+    <meta name="description"
+        content="Pani Bułeczka – domowe wypieki tworzone z sercem.">
+
+    <meta name="theme-color" content="#c96b1c">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #c96b1c;
+            --brown: #442714;
+            --brown-light: #74513a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "DM Sans", sans-serif;
+            color: var(--brown);
+
+            display: flex;
+            justify-content: center;
+
+            padding: 18px;
+            overflow-x: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 5% 5%,
+                    rgba(229, 151, 68, 0.35),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 95% 90%,
+                    rgba(194, 107, 35, 0.25),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #fffaf5,
+                    #f4e5d5
+                );
+        }
+
+
+        /* BACKGROUND */
+
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(10px);
+            z-index: -1;
+            opacity: 0.35;
+        }
+
+        .blob-1 {
+            width: 250px;
+            height: 250px;
+            background: #e4a15d;
+            top: -120px;
+            left: -100px;
+        }
+
+        .blob-2 {
+            width: 300px;
+            height: 300px;
+            background: #c87937;
+            right: -160px;
+            bottom: -150px;
+        }
+
+
+        /* MAIN CARD */
+
+        .page {
+            width: 100%;
+            max-width: 470px;
+            min-height: calc(100vh - 36px);
+
+            padding: 35px 20px 25px;
+
+            display: flex;
+            flex-direction: column;
+
+            border-radius: 32px;
+
+            background: rgba(255, 255, 255, 0.60);
+
+            border: 1px solid rgba(255,255,255,0.85);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 25px 70px
+                rgba(81, 45, 20, 0.13);
+
+            animation: pageAppear 0.7s ease forwards;
+        }
+
+        @keyframes pageAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* HEADER */
+
+        .header {
+            text-align: center;
+        }
+
+
+        /* LOGO */
+
+        .logo-container {
+            width: 190px;
+            height: 190px;
+
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: white;
+
+            box-shadow:
+                0 15px 35px rgba(132, 73, 25, 0.16),
+                inset 0 0 0 1px rgba(190, 115, 50, 0.08);
+
+            overflow: hidden;
+
+            animation: logoAppear 0.8s ease forwards;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        @keyframes logoAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.85);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+
+        .place-name {
+            font-family: "Playfair Display", serif;
+
+            font-size: 34px;
+            font-weight: 700;
+
+            letter-spacing: -1px;
+
+            color: var(--brown);
+
+            margin-bottom: 8px;
+        }
+
+
+        .description {
+            max-width: 340px;
+
+            margin: auto;
+
+            font-size: 14px;
+            line-height: 1.6;
+
+            color: var(--brown-light);
+        }
+
+
+        /* DIVIDER */
+
+        .divider {
+            width: 70px;
+            height: 2px;
+
+            margin: 25px auto;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--orange),
+                    transparent
+                );
+        }
+
+
+        /* SECTION TITLE */
+
+        .section-title {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            margin: 0 5px 14px;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.4px;
+
+            color: #9b765c;
+        }
+
+        .section-title::after {
+            content: "";
+
+            height: 1px;
+            flex: 1;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(180,120,70,0.3),
+                    transparent
+                );
+        }
+
+
+        /* BUTTONS */
+
+        .links {
+            display: flex;
+            flex-direction: column;
+
+            gap: 13px;
+        }
+
+
+        .link {
+            position: relative;
+
+            min-height: 74px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 11px 16px;
+
+            text-decoration: none;
+            color: var(--brown);
+
+            border-radius: 21px;
+
+            background:
+                rgba(255,255,255,0.82);
+
+            border:
+                1px solid rgba(130,80,40,0.08);
+
+            box-shadow:
+                0 7px 20px rgba(70,40,20,0.05);
+
+            overflow: hidden;
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+
+        .link::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -120%;
+
+            width: 70%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,.8),
+                    transparent
+                );
+
+            transform: skewX(-20deg);
+
+            transition: left .6s ease;
+        }
+
+
+        .link:hover::before {
+            left: 140%;
+        }
+
+
+        .link:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 14px 30px rgba(70,40,20,0.12);
+        }
+
+
+        .link:active {
+            transform: scale(.98);
+        }
+
+
+        /* ICONS */
+
+        .link-icon {
+            width: 50px;
+            height: 50px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-right: 14px;
+
+            border-radius: 16px;
+
+            font-size: 21px;
+        }
+
+
+        /* INSTAGRAM */
+
+        .instagram .link-icon {
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #833ab4,
+                    #fd1d1d,
+                    #fcb045
+                );
+        }
+
+
+        /* FACEBOOK */
+
+        .facebook .link-icon {
+            color: white;
+            background: #1877f2;
+        }
+
+
+        /* PHONE */
+
+        .phone .link-icon {
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #d9873c,
+                    #b85b19
+                );
+        }
+
+
+        /* REVIEW */
+
+        .review .link-icon {
+            color: #d47b12;
+            background: #fff2cf;
+        }
+
+
+        /* BUTTON TEXT */
+
+        .link-info {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+
+        .link-title {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+
+        .link-description {
+            margin-top: 3px;
+
+            font-size: 11px;
+
+            color: #957d6b;
+        }
+
+
+        /* ARROW */
+
+        .arrow {
+            margin-left: auto;
+
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #f8eee6;
+
+            color: #b39176;
+
+            font-size: 13px;
+
+            transition: .2s ease;
+        }
+
+
+        .link:hover .arrow {
+            transform: translateX(4px);
+
+            background: var(--orange);
+
+            color: white;
+        }
+
+
+        /* REVIEW SPECIAL */
+
+        .review {
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff8e9,
+                    #ffffff
+                );
+
+            border:
+                1px solid rgba(220,150,50,0.18);
+        }
+
+
+        .stars {
+            display: flex;
+            gap: 2px;
+
+            margin-left: auto;
+
+            color: #f2a71d;
+
+            font-size: 10px;
+        }
+
+
+        .review .arrow {
+            margin-left: 8px;
+        }
+
+
+        /* THANK YOU */
+
+        .thank-you {
+            margin-top: 22px;
+
+            padding: 19px 18px;
+
+            border-radius: 21px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4b2d19,
+                    #70401f
+                );
+
+            color: white;
+
+            box-shadow:
+                0 12px 30px rgba(60,35,18,0.16);
+        }
+
+
+        .thank-you-icon {
+            font-size: 23px;
+            margin-bottom: 7px;
+        }
+
+
+        .thank-you h3 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 18px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .thank-you p {
+            font-size: 11px;
+
+            line-height: 1.5;
+
+            opacity: .75;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            margin-top: auto;
+
+            padding-top: 28px;
+
+            text-align: center;
+
+            color: #aa8d77;
+
+            font-size: 11px;
+        }
+
+
+        footer i {
+            color: var(--orange);
+            margin: 0 3px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 10px;
+            }
+
+
+            .page {
+                min-height: calc(100vh - 20px);
+
+                padding: 28px 16px 20px;
+
+                border-radius: 27px;
+            }
+
+
+            .logo-container {
+                width: 175px;
+                height: 175px;
+            }
+
+
+            .place-name {
+                font-size: 31px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+
+    <main class="page">
+
+
+        <!-- HEADER -->
+
+        <section class="header">
+
+            <div class="logo-container">
+
+                <img
+                    src="pani-buleczka-logo.png"
+                    alt="Pani Bułeczka Logo"
+                >
+
+            </div>
+
+
+            <h1 class="place-name">
+                Pani Bułeczka
+            </h1>
+
+
+            <p class="description">
+                Świeże wypieki tworzone z pasją
+                i małe przyjemności każdego dnia.
+            </p>
+
+        </section>
+
+
+
+        <div class="divider"></div>
+
+
+
+        <!-- LINKS -->
+
+        <div class="section-title">
+            Odwiedź nas
+        </div>
+
+
+        <section class="links">
+
+
+            <!-- INSTAGRAM -->
+
+            <a
+                href="https://www.instagram.com/panibuleczka_/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="link instagram"
+            >
+
+                <div class="link-icon">
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+
+
+                <div class="link-info">
+
+                    <span class="link-title">
+                        Instagram
+                    </span>
+
+                    <span class="link-description">
+                        Zobacz nasze najnowsze wypieki
+                    </span>
+
+                </div>
+
+
+                <div class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+            </a>
+
+
+
+            <!-- FACEBOOK -->
+
+            <a
+                href="https://www.facebook.com/share/1GZwvQVaF2/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="link facebook"
+            >
+
+                <div class="link-icon">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </div>
+
+
+                <div class="link-info">
+
+                    <span class="link-title">
+                        Facebook
+                    </span>
+
+                    <span class="link-description">
+                        Bądź z nami na bieżąco
+                    </span>
+
+                </div>
+
+
+                <div class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+            </a>
+
+
+
+            <!-- PHONE -->
+
+            <a
+                href="tel:+48724510401"
+                class="link phone"
+            >
+
+                <div class="link-icon">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+
+
+                <div class="link-info">
+
+                    <span class="link-title">
+                        Zadzwoń do nas
+                    </span>
+
+                    <span class="link-description">
+                        +48 724 510 401
+                    </span>
+
+                </div>
+
+
+                <div class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+            </a>
+
+
+
+            <!-- GOOGLE REVIEW -->
+
+            <a
+                href="https://search.google.com/local/writereview?placeid=ChIJqySs2yzzD0cRs0GWeJOoGoA"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="link review"
+            >
+
+                <div class="link-icon">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+
+
+                <div class="link-info">
+
+                    <span class="link-title">
+                        Zostaw opinię
+                    </span>
+
+                    <span class="link-description">
+                        Twoja opinia jest dla nas bardzo ważna
+                    </span>
+
+                </div>
+
+
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+
+
+                <div class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+            </a>
+
+
+        </section>
+
+
+
+        <!-- THANK YOU -->
+
+        <section class="thank-you">
+
+            <div class="thank-you-icon">
+                🥐
+            </div>
+
+            <h3>Dziękujemy, że jesteś z nami!</h3>
+
+            <p>
+                Mamy nadzieję, że nasze wypieki
+                umilą Ci każdy dzień.
+            </p>
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            Pani Bułeczka
+
+            <i class="fa-solid fa-heart"></i>
+
+            Świeże wypieki każdego dnia
+
+        </footer>
+
+
+    </main>
+
+</body>
+</html>
